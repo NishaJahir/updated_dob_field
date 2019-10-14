@@ -30,6 +30,7 @@ input[type=submit] {
   top: 100%;
   left: 16px;
   right: 0;
+  width : 89%;
 }
 
 .autocomplete-items div {
