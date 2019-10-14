@@ -4,9 +4,9 @@ $(document).ready( function() {
 		if(this.value > 31){
 			this.value ='';
 		}
-		var year = $jQuery('#nn_invoice_year').val();
+		var year = $('#nn_invoice_year').val();
 		var leap = (year % 4 == 0 && year % 100 != 0);
-	        if ($jQuery('#nn_invoice_month').val() == '02' && ( (!leap && this.value > 29) || this.value > 28) ) {
+	        if ($('#nn_invoice_month').val() == '02' && ( (!leap && this.value > 29) || this.value > 28) ) {
                 this.value = '28';
                 }
 	});
@@ -103,12 +103,12 @@ let current_date = new Date();
     autocomplete(document.getElementById("nn_invoice_year"), year_range);
 	
 	$('#nn_invoice_form').on('submit', function() {
-		$('#novalnet_form_btn').attr('disabled',true);
 
 	if ( !$('#nn_invoice_guarantee_force').val() && $("#nn_invoice_year").val(' ') || $("#nn_invoice_month").val(' ') || $("#nn_invoice_date").val(' ')) {
 	    alert('Enter the date of birth');
         return false;
 	}
+	$('#novalnet_form_btn').attr('disabled',true);
 	});
 });
 
