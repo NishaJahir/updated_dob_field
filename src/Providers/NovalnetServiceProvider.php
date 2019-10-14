@@ -305,7 +305,8 @@ class NovalnetServiceProvider extends ServiceProvider
 											if (empty($address->companyName)) {
 											$content = $twig->render('Novalnet::PaymentForm.NOVALNET_INVOICE', [
 																'nnPaymentProcessUrl' => $paymentProcessUrl,
-												'paymentName' => $paymentName,				
+												'paymentName' => $paymentName,	
+												'guarantee_force' => trim($config->get('Novalnet.' . strtolower($paymentKey) . '_payment_guarantee_force_active'));
 												'paymentMopKey'     =>  $paymentKey
 											
 											]); 												$contentType = 'htmlContent';
