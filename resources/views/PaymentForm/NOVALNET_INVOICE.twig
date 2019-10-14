@@ -24,7 +24,7 @@
 	 
 	<div class="col-sm-4">
 	   <select id="nn_invoice_month" type="text" name="nn_invoice_month" placeholder="Month" class="form-control">
-	   <option value="">Select a Month</option>
+	   <option value="0" selected>Select a Month</option>
 	    {% for i in 1..12 %}
     		<option value="{{i}}">{{ trans("Novalnet::PaymentMethod.month#{i}") }}</option>
 	    {% endfor %}
