@@ -9,7 +9,7 @@ $(document).ready( function() {
         	if ((len == 1 && ((inputChar == 0 && day_val.charAt(0) == 0))) || (len == 1 && ((inputChar > 1 && day_val.charAt(0) == 3)))) {
         	return false;
         	}
-     		//return reg.test( String.fromCharCode( keycode ) );
+     		return reg.test( String.fromCharCode( keycode ) );
 	});
 	
 	$( '#nn_invoice_year' ).keypress(function (event) {
@@ -23,7 +23,7 @@ $(document).ready( function() {
 		{
 		  return false;
 		} 
-		//return reg.test(inputChar);
+		return reg.test(inputChar);
 	});
 	
     function autocomplete(inp, arr) {
