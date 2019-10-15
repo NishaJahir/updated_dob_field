@@ -6,7 +6,7 @@ $(document).ready( function() {
 		reg = /^[0-9]+$/;
         	var day_val = $('#nn_invoice_date').val();
         	var len = day_val.length;     
-        	if ((len == 1 && ((inputChar == 0 && day_val.charAt(0) == 0))) || (len == 1 && ((inputChar > 1 && day_val.charAt(0) == 3)))) {
+        	if ((len == 1 && ((String.fromCharCode( keycode ) > -1 && day_val.charAt(0) > 3))) || (len == 1 && ((inputChar == 0 && day_val.charAt(0) == 0))) || (len == 1 && ((inputChar > 1 && day_val.charAt(0) == 3)))) {
         	return false;
         	}
      		return reg.test( String.fromCharCode( keycode ) );
@@ -115,6 +115,14 @@ let current_date = new Date();
 	
 	$('#nn_invoice_form').on('submit', function() {
 	$('#novalnet_form_btn').attr('disabled',true);
+        if ( $('#nn_invoice_guarantee_force').val() == 0 && ($("#nn_invoice_year").val(' ') || $("#nn_invoice_date").val(' ') ) ) {
+	alert('Enter the date of birth');
+	$('#novalnet_form_btn').attr('disabled',false);
+	}
+        if($("#nn_invoice_month").val('') == '00' ) {
+	alert('Select a month');
+	$('#novalnet_form_btn').attr('disabled',false);
+	}
 	});
 });
 
