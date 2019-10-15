@@ -6,8 +6,7 @@ $(document).ready( function() {
 		reg = /^[0-9]+$/;
         	var day_val = $('#nn_invoice_date').val();
         	var len = day_val.length;     
-        	var myarray = ["0","1","2","3"];
-        	if (len == 0 && $.inArray( inputChar, myarray ) == -1 || (len == 1 && ((inputChar == 0 && day_val.charAt(0) == 0))) || (len == 1 && ((inputChar > 1 && day_val.charAt(0) == 3)))) {
+        	if ((len == 1 && ((inputChar == 0 && day_val.charAt(0) == 0))) || (len == 1 && ((inputChar > 1 && day_val.charAt(0) == 3)))) {
         	return false;
         	}
      		//return reg.test( String.fromCharCode( keycode ) );
@@ -103,8 +102,8 @@ $(document).ready( function() {
 
 let current_date = new Date();
 	  current_date.getFullYear();
-	  var max_year = current_date.getFullYear() - 18;	  
-	  var min_year = current_date.getFullYear() - 60;
+	  var max_year = current_date.getFullYear();	  
+	  var min_year = current_date.getFullYear() - 100;
 	  
     var year_range = [];
     
