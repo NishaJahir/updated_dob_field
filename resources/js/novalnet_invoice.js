@@ -42,10 +42,13 @@ $(document).ready( function() {
       a.setAttribute("class", "autocomplete-items");
       
       this.parentNode.appendChild(a);
-      
+      var count = 1;
       for (i = 0; i < arr.length; i++) {     
         var regex = new RegExp( val, 'g' );
-        if (arr[i].match(regex)) {        
+        if (arr[i].match(regex)) {   
+	  if( count == 10 ) {
+	   break;
+	  }
           b = document.createElement("DIV");
           b.innerHTML = arr[i].replace( val,"<strong>" + val + "</strong>" );          
           b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
@@ -54,6 +57,7 @@ $(document).ready( function() {
               closeAllLists();
           });
           a.appendChild(b);
+	  count++;
         }
       }
   });
@@ -103,7 +107,7 @@ $(document).ready( function() {
 let current_date = new Date();
 	  current_date.getFullYear();
 	  var max_year = current_date.getFullYear();	  
-	  var min_year = current_date.getFullYear() - 100;
+	  var min_year = current_date.getFullYear() - 120;
 	  
     var year_range = [];
     
