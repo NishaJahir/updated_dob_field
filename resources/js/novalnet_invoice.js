@@ -119,7 +119,7 @@ let current_date = new Date();
 	
 	$('#nn_invoice_form').on('submit', function() {
 	$('#novalnet_form_btn').attr('disabled',true);
-        if ( $('#nn_invoice_guarantee_force').val() == 0 && ($("#nn_invoice_year").val(' ') || $("#nn_invoice_date").val(' ') ) ) {
+        if ( $("#nn_invoice_year").val(' ') || $("#nn_invoice_date").val(' ')  ) {
 	alert('Enter the date of birth');
 	$('#novalnet_form_btn').attr('disabled',false);
 	}
