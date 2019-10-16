@@ -34,7 +34,7 @@ $(document).ready( function() {
       var a, b, i, val = this.value;
      
       closeAllLists();
-      if (!val) { return false;}
+      if (!val || val.length < 2) { return false;}
       currentFocus = -1;
       
       a = document.createElement("DIV");
@@ -119,11 +119,11 @@ let current_date = new Date();
 	
 	$('#nn_invoice_form').on('submit', function() {
 	$('#novalnet_form_btn').attr('disabled',true);
-        if ( $("#nn_invoice_year").val(' ') || $("#nn_invoice_date").val(' ')  ) {
+        if ( $("#nn_invoice_year").val() == '' || $("#nn_invoice_date").val() == '' ) {
 	alert('Enter the date of birth');
 	$('#novalnet_form_btn').attr('disabled',false);
 	}
-        if($("#nn_invoice_month").val('') == '00' ) {
+        if($("#nn_invoice_month").val('') == '' ) {
 	alert('Select a month');
 	$('#novalnet_form_btn').attr('disabled',false);
 	}
