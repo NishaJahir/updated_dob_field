@@ -173,7 +173,13 @@ class PaymentController extends Controller
             $guranteeStatus = $this->paymentService->getGuaranteeStatus($this->basketRepository->load(), $requestData['paymentKey']);                        
             
             if('guarantee' == $guranteeStatus)
-            {          
+            {        
+                if($requestData['paymentKey'] == 'NOVALNET_SEPA') {
+                 $requestData['nn_sepa_birthday'] =    $requestData['nn_sepa_year'].'-'.$requestData['nn_sepa_month'].'-'.$requestData['nn_sepa_date'];  
+                } else {
+                 $requestData['nn_invoice_birthday'] =    $requestData['nn_invoice_year'].'-'.$requestData['nn_invoice_month'].'-'.$requestData['nn_invoice_date'];   
+                }
+                
                 $birthday     = ( $requestData['paymentKey'] == 'NOVALNET_SEPA' ) ? $requestData['nn_sepa_birthday'] : $requestData['nn_invoice_birthday'];
                 $force_status = ( $requestData['paymentKey'] == 'NOVALNET_SEPA' ) ? 'Novalnet.novalnet_sepa_payment_guarantee_force_active' : 'Novalnet.novalnet_invoice_payment_guarantee_force_active';               
                 
