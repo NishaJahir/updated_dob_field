@@ -1,13 +1,16 @@
 $(document).ready( function() {
 	
-	$("#nn_invoice_date").on("input",function (e)
-	{		
+	$("#nn_invoice_date").on("input keyup keydown keypress",function (e)
+	{	
        	var value = $(this).val();
+		console.log(value);
 	var reg = new RegExp(/[^0-9]/g);
 	if (value.match(reg))
 	{
+		console.log('test');
 	e.preventDefault();
 	}
+		console.log('failed');
 	var day_val = $('#nn_invoice_date').val();
 	var len = day_val.length;     
 	if ((len == 1 && ((value > -1 && day_val.charAt(0) > 3))) || (len == 1 && ((value == 0 && day_val.charAt(0) == 0))) || (len == 1 && ((value > 1 && day_val.charAt(0) == 3)))) {
