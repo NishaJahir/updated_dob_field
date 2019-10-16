@@ -3,7 +3,7 @@ $(document).ready( function() {
 	{
 		var keycode = ( 'which' in event ) ? event.which : event.keyCode;
 		var inputChar = String.fromCharCode( keycode );
-		reg = "/^[0-9]+$/";
+		reg = /^[0-9]+$/;
         	var day_val = $('#nn_invoice_date').val();
         	var len = day_val.length;     
         	if ((len == 1 && ((String.fromCharCode( keycode ) > -1 && day_val.charAt(0) > 3))) || (len == 1 && ((inputChar == 0 && day_val.charAt(0) == 0))) || (len == 1 && ((inputChar > 1 && day_val.charAt(0) == 3)))) {
