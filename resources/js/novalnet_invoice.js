@@ -2,7 +2,7 @@ $(document).ready( function() {
 	
 	$(document).on("input keyup keypress","#nn_invoice_date",function (e)
 	{
-		var charCode = e.which || e.keyCode;
+		var charCode = e.which || this.value.substr(-1).charCodeAt(0);
 		if ((charCode < 48 || charCode > 57))
 		return false;
 
