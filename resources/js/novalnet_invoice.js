@@ -1,31 +1,32 @@
 $(document).ready( function() {
 	
-	$("#nn_invoice_date").on("keypress keyup",function (e) {     	
-	var value = String.fromCharCode(e.which);		
-	var reg = new RegExp(/[^0-9]/g);
-	if (value.match(reg))
-	{		
-	e.preventDefault();
-	}
-	var day_val = $('#nn_invoice_date').val();
-	var len = day_val.length;     
-	if ((len == 1 && ((value > -1 && day_val.charAt(0) > 3))) || (len == 1 && ((value == 0 && day_val.charAt(0) == 0))) || (len == 1 && ((value > 1 && day_val.charAt(0) == 3)))) {
-	return false;
-	}
-
+	 $("#nn_invoice_date").on("keypress keyup",function (e)
+	{
+		var exp = String.fromCharCode(e.which);
+		var reg = new RegExp(/[^0-9]/g);
+		if (exp.match(reg))
+		{
+		  e.preventDefault();
+		}
+        	var day_val = $('#nn_invoice_date').val();
+        	var len = day_val.length;     
+        	if ((len == 1 && ((exp > -1 && day_val.charAt(0) > 3))) || (len == 1 && ((exp == 0 && day_val.charAt(0) == 0))) || (len == 1 && ((exp > 1 && day_val.charAt(0) == 3)))) {
+        	return false;
+        	}
+     		return reg.test( String.fromCharCode( keycode ) );
 	});
 	
 	$("#nn_invoice_year").on("keypress keyup",function (e) {		
-		var value = String.fromCharCode(e.which);
+		var exp = String.fromCharCode(e.which);
 		var reg = new RegExp(/[^0-9]/g);
-		if (value.match(reg))
+		if (exp.match(reg))
 		{
 		  e.preventDefault();
 		}
         	var year_val = $( '#nn_invoice_year' ).val();
         	var len = year_val.length;     
       		
-		if ((len == 0 && (value != 2 && value != 1)) || (len == 1 && ((value != 9 && year_val.charAt(0) == 1) || (value != 0 && year_val.charAt(0) == 2))))
+		if ((len == 0 && (exp != 2 && exp != 1)) || (len == 1 && ((exp != 9 && year_val.charAt(0) == 1) || (exp != 0 && year_val.charAt(0) == 2))))
 		{
 		  return false;
 		} 
