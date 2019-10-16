@@ -13,7 +13,6 @@ $(document).ready( function() {
         	if ((len == 1 && ((exp > -1 && day_val.charAt(0) > 3))) || (len == 1 && ((exp == 0 && day_val.charAt(0) == 0))) || (len == 1 && ((exp > 1 && day_val.charAt(0) == 3)))) {
         	return false;
         	}
-     		return reg.test( String.fromCharCode( keycode ) );
 	});
 	
 	$("#nn_invoice_year").on("keypress keyup",function (e) {		
