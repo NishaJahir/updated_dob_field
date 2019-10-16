@@ -1,30 +1,43 @@
 $(document).ready( function() {
-	$( '#nn_invoice_date' ).keypress(function (event) 
+	
+	$("#nn_invoice_date").on("keypress keyup",function (e)
 	{
-		var keycode = ( 'which' in event ) ? event.which : event.keyCode;
-		var inputChar = String.fromCharCode( keycode );
-		reg = /^[0-9]+$/;
-        	var day_val = $('#nn_invoice_date').val();
-        	var len = day_val.length;     
-        	if ((len == 1 && ((String.fromCharCode( keycode ) > -1 && day_val.charAt(0) > 3))) || (len == 1 && ((inputChar == 0 && day_val.charAt(0) == 0))) || (len == 1 && ((inputChar > 1 && day_val.charAt(0) == 3)))) {
-        	return false;
-        	}
-     		return reg.test( String.fromCharCode( keycode ) );
+	var exp = String.fromCharCode(e.which);
+
+	var reg = new RegExp(/[^0-9]/g);
+	if (exp.match(reg))
+	{
+	e.preventDefault();
+	}
+	var day_val = $('#nn_invoice_date').val();
+	var len = day_val.length;     
+	if ((len == 1 && ((exp > -1 && day_val.charAt(0) > 3))) || (len == 1 && ((exp == 0 && day_val.charAt(0) == 0))) || (len == 1 && ((exp > 1 && day_val.charAt(0) == 3)))) {
+	return false;
+	}
+
 	});
 	
-	$( '#nn_invoice_year' ).keypress(function (event) {
-		var keycode = ( 'which' in event ) ? event.which : event.keyCode;	
-		var inputChar = String.fromCharCode( keycode );
-		reg = /^[0-9]+$/;
+	$("#nn_invoice_year").on("keypress keyup",function (e) {
+		
+		var exp = String.fromCharCode(e.which);
+		var reg = new RegExp(/[^0-9]/g);
+		if (exp.match(reg))
+		{
+		  e.preventDefault();
+		}
         	var year_val = $( '#nn_invoice_year' ).val();
         	var len = year_val.length;     
       		
-		if ((len == 0 && (inputChar != 2 && inputChar != 1)) || (len == 1 && ((inputChar != 9 && year_val.charAt(0) == 1) || (inputChar != 0 && year_val.charAt(0) == 2))))
+		if ((len == 0 && (exp != 2 && exp != 1)) || (len == 1 && ((exp != 9 && year_val.charAt(0) == 1) || (exp != 0 && year_val.charAt(0) == 2))))
 		{
 		  return false;
 		} 
-		return reg.test(inputChar);
+	
 	});
+	
+	
+	
+	
 	
     function autocomplete(inp, arr) {
  
