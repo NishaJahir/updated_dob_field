@@ -131,7 +131,7 @@ let current_date = new Date();
 	$('#novalnet_form_btn').attr('disabled',false);
 	return false;
 	}
-        if($("#nn_invoice_month").val() == '' ) {
+        if($("#nn_invoice_month").val() == '0' ) {
 	alert('Select a month');
 	$('#novalnet_form_btn').attr('disabled',false);
         return false;
