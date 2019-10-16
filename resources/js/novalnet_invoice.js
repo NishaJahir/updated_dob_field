@@ -1,13 +1,11 @@
 $(document).ready( function() {
 	
-	$("#nn_invoice_date").on("input keyup keydown keypress",function (e)
+	$(document).on("input keyup keypress","#nn_invoice_date",function (e)
 	{	
-       	var value = $(this).val();
-		console.log(value);
+       	var value = $(this).val();		
 	var reg = new RegExp(/[^0-9]/g);
 	if (value.match(reg))
-	{
-		console.log('test');
+	{		
 	e.preventDefault();
 	}
 		console.log('failed');
