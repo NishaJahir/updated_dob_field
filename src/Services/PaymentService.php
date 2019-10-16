@@ -633,7 +633,7 @@ class PaymentService
         if ($guaranteePayment == 'true') {
             // Get guarantee minimum amount value
             $minimumAmount = $this->paymentHelper->getNovalnetConfig($paymentKeyLow . '_guarantee_min_amount');
-            $minimumAmount = ((preg_match('/^[0-9]*$/', $minimumAmount) && $minimumAmount >= '999')  ? $minimumAmount : '999');
+            $minimumAmount = ((preg_match('/^[0-9]*$/', $minimumAmount) && $minimumAmount >= '30000')  ? $minimumAmount : '30000');
             $amount        = (sprintf('%0.2f', $basket->basketAmount) * 100);
 
             $billingAddressId = $basket->customerInvoiceAddressId;
