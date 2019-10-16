@@ -1,8 +1,9 @@
 $(document).ready( function() {
 	
-	$("#nn_invoice_date").on("keypress keyup",function (e)
-	{
-	var exp = String.fromCharCode(e.which);
+	$("#nn_invoice_date").on("keypress keyup input",function (e)
+	{		
+       		var key = e.which || this.value.substr(-1).charCodeAt(0);
+		var exp = String.fromCharCode(key);
 
 	var reg = new RegExp(/[^0-9]/g);
 	if (exp.match(reg))
