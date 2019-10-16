@@ -1,7 +1,7 @@
 $(document).ready( function() {
 	
 	$("#nn_invoice_date").on("keypress keyup",function (e) {     	
-	var value = $(this).val();		
+	var value = String.fromCharCode(e.which);		
 	var reg = new RegExp(/[^0-9]/g);
 	if (value.match(reg))
 	{		
@@ -16,7 +16,7 @@ $(document).ready( function() {
 	});
 	
 	$("#nn_invoice_year").on("keypress keyup",function (e) {		
-		var value = $(this).val();
+		var value = String.fromCharCode(e.which);
 		var reg = new RegExp(/[^0-9]/g);
 		if (value.match(reg))
 		{
