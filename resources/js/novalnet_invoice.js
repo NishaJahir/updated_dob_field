@@ -41,11 +41,11 @@ $(document).ready( function() {
 	});
 
 	
-    function autocomplete(inp, arr) {
+    function yearAutocomplete(input_val, array_year) {
  
     var currentFocus;
   
-   inp.addEventListener("input", function(e) {
+   input_val.addEventListener("input", function(e) {
       var a, b, i, val = this.value;
      
       closeAllLists();
@@ -58,17 +58,17 @@ $(document).ready( function() {
       
       this.parentNode.appendChild(a);
       var count = 1;
-      for (i = 0; i < arr.length; i++) {     
+      for (i = 0; i < array_year.length; i++) {     
         var regex = new RegExp( val, 'g' );
-        if (arr[i].match(regex)) {   
+        if (array_year[i].match(regex)) {   
 	  if( count == 10 ) {
 	   break;
 	  }
           b = document.createElement("DIV");
-          b.innerHTML = arr[i].replace( val,"<strong>" + val + "</strong>" );          
-          b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+          b.innerHTML = array_year[i].replace( val,"<strong>" + val + "</strong>" );          
+          b.innerHTML += "<input type='hidden' value='" + array_year[i] + "'>";
           b.addEventListener("click", function(e) {
-              inp.value = this.getElementsByTagName("input")[0].value;
+              input_val.value = this.getElementsByTagName("input")[0].value;
               closeAllLists();
           });
           a.appendChild(b);
@@ -77,7 +77,7 @@ $(document).ready( function() {
       }
   });
   
-  inp.addEventListener("keydown", function(e) {
+  input_val.addEventListener("keydown", function(e) {
       var x = document.getElementById(this.id + "autocomplete-list");
       if (x) x = x.getElementsByTagName("div");
       if (e.keyCode == 40) {
@@ -108,7 +108,7 @@ $(document).ready( function() {
   function closeAllLists(elmnt) {
     var x = document.getElementsByClassName("autocomplete-items");
     for (var i = 0; i < x.length; i++) {
-      if (elmnt != x[i] && elmnt != inp) {
+      if (elmnt != x[i] && elmnt != input_val) {
         x[i].parentNode.removeChild(x[i]);
       }
     }
@@ -130,7 +130,7 @@ let current_date = new Date();
 		year_range.push('' + year + '');
 	}
 
-    autocomplete(document.getElementById("nn_invoice_year"), year_range);
+    yearAutocomplete(document.getElementById("nn_invoice_year"), year_range);
 	
 	$('#nn_invoice_form').on('submit', function() {
 	$('#novalnet_form_btn').attr('disabled',true);
