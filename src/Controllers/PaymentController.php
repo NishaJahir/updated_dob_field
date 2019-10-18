@@ -25,7 +25,7 @@ use Plenty\Modules\Basket\Contracts\BasketRepositoryContract;
 use Novalnet\Services\PaymentService;
 use Plenty\Plugin\Templates\Twig;
 use Plenty\Plugin\ConfigRepository;
-
+use Plenty\Plugin\Log\Loggable;
 
 /**
  * Class PaymentController
@@ -34,6 +34,7 @@ use Plenty\Plugin\ConfigRepository;
  */
 class PaymentController extends Controller
 { 
+    use Loggable;
     /**
      * @var Request
      */
@@ -177,6 +178,8 @@ class PaymentController extends Controller
                 if($requestData['paymentKey'] == 'NOVALNET_SEPA') {
                  $requestData['nn_sepa_birthday'] =    $requestData['nn_sepa_year'].'-'.$requestData['nn_sepa_month'].'-'.$requestData['nn_sepa_date'];  
                 } else {
+                 $requestData['nn_invoice_month'] = strlen($requestData['nn_invoice_month']) < 2 ? "0". $requestData['nn_invoice_month'] : $requestData['nn_invoice_month'];
+                 $this->getLogger(__METHOD__)->error('month', $requestData['nn_invoice_month']);
                  $requestData['nn_invoice_birthday'] =    $requestData['nn_invoice_year'].'-'.$requestData['nn_invoice_month'].'-'.$requestData['nn_invoice_date'];   
                 }
                 
