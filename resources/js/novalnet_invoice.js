@@ -18,8 +18,8 @@ $(document).ready( function() {
 	$('#nn_invoice_date').on('blur', function() {
 	var date = $('#nn_invoice_date').val();
 	if (date != '0' && date != '' && date.length < 2) {
-    	var result = "0"+ date.val(); 
-    	date.val(result);
+    	var result = "0"+ date; 
+    	$('#nn_invoice_date').val(result);
 	}
 	});
 	
