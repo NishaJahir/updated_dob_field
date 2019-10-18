@@ -150,7 +150,7 @@ let current_date = new Date();
 	
 	function isActualDate (month, day, year) {
 		var tempDate = new Date(year, --month, day);
-		if( month !== tempDate.getMonth())) {
+		if( month !== tempDate.getMonth()) {
 			alert("The date format is invalid");
 			$('#novalnet_form_btn').attr('disabled',false);
 			return false;
