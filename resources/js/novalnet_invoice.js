@@ -151,9 +151,17 @@ let current_date = new Date();
 	$('#novalnet_form_btn').attr('disabled',false);
 	return false;
 	}
-	
+	return isActualDate($("#nn_invoice_month").val(), $("#nn_invoice_date").val(), $("#nn_invoice_year").val());
 	});
-	
+	function isActualDate (month, day, year) {
+		var tempDate = new Date(year, --month, day);
+		if( month !== tempDate.getMonth() || $("#nn_invoice_year").val() < 4) {
+			alert("The date format is invalid");
+			$('#novalnet_form_btn').attr('disabled',false);
+			return false;
+		}
+		return true;
+}
 	
 });
 
