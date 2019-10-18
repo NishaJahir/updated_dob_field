@@ -145,7 +145,8 @@ let current_date = new Date();
         return false;
 	}
 	
-	isActualDate($("#nn_invoice_month").val(), $("#nn_invoice_date").val(), $("#nn_invoice_year").val());
+	return isActualDate($("#nn_invoice_month").val(), $("#nn_invoice_date").val(), $("#nn_invoice_year").val());
+	});
 	
 	function isActualDate (month, day, year) {
 		var tempDate = new Date(year, --month, day);
@@ -156,8 +157,6 @@ let current_date = new Date();
 		}
 		return true;
 	}
-	
-	});
 });
 
  
