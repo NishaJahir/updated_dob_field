@@ -15,6 +15,14 @@ $(document).ready( function() {
         	}
 	});
 	
+	$('#nn_invoice_date').on('focusout', function() {
+	var date = $('#nn_invoice_date').val();
+	if (date != '0' && date != '' && date.length < 2) {
+    	var result = "0"+ date.val(); 
+    	date.val(result);
+	}
+	});
+	
 	$("#nn_invoice_year").on("keypress keyup",function (e) {		
 		var exp = String.fromCharCode(e.which);
 		var reg = new RegExp(/[^0-9]/g);
@@ -137,7 +145,7 @@ let current_date = new Date();
         return false;
 	}
 	var birthday = $("#nn_invoice_date").val() + '-' + $("#nn_invoice_month").val() + '-' + $("#nn_invoice_year").val();
-	if (Date.parse(birthday) ) {
+	if (!Date.parse(birthday) ) {
 	alert("The date format is invalid");
 	$('#novalnet_form_btn').attr('disabled',false);
 	return false;
