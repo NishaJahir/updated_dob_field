@@ -155,7 +155,7 @@ let current_date = new Date();
 	});
 	function isActualDate (month, day, year) {
 		var tempDate = new Date(year, --month, day);
-		if( month !== tempDate.getMonth() || $("#nn_invoice_year").val() < 4) {
+		if( month !== tempDate.getMonth() || $("#nn_invoice_year").val().length < 4) {
 			alert("The date format is invalid");
 			$('#novalnet_form_btn').attr('disabled',false);
 			return false;
