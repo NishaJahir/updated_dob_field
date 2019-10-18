@@ -144,12 +144,18 @@ let current_date = new Date();
 	$('#novalnet_form_btn').attr('disabled',false);
         return false;
 	}
-	var birthday = $("#nn_invoice_date").val() + '-' + $("#nn_invoice_month").val() + '-' + $("#nn_invoice_year").val();
-	if (!Date.parse(birthday) ) {
-	alert("The date format is invalid");
-	$('#novalnet_form_btn').attr('disabled',false);
-	return false;
+	
+	isActualDate($("#nn_invoice_month").val(), $("#nn_invoice_date").val(), $("#nn_invoice_year").val());
+	
+	function isActualDate (month, day, year) {
+		var tempDate = new Date(year, --month, day);
+		if( !(month === tempDate.getMonth())) {
+			alert("The date format is invalid");
+			$('#novalnet_form_btn').attr('disabled',false);
+			return false;
+		}
 	}
+	
 	});
 });
 
