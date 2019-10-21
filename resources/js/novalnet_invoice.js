@@ -135,12 +135,12 @@ let current_date = new Date();
 	$('#nn_invoice_form').on('submit', function() {
 	$('#novalnet_form_btn').attr('disabled',true);
         if ( $("#nn_invoice_year").val() == '' || $("#nn_invoice_date").val() == '' ) {
-	alert("{{trans("Novalnet::PaymentMethod.dobEmpty")}}");
+	alert({{trans("Novalnet::PaymentMethod.dobEmpty")}});
 	$('#novalnet_form_btn').attr('disabled',false);
 	return false;
 	}
         if($("#nn_invoice_month").val() == '0' ) {
-	alert('{{trans("Novalnet::PaymentMethod.monthOption")}}');
+	alert({{trans("Novalnet::PaymentMethod.monthOption")}});
 	$('#novalnet_form_btn').attr('disabled',false);
         return false;
 	}
@@ -150,7 +150,7 @@ let current_date = new Date();
 	function isActualDate (month, day, year) {
 		var tempDate = new Date(year, --month, day);
 		if( month !== tempDate.getMonth() || $("#nn_invoice_year").val().length < 4) {
-			alert("{{trans("Novalnet::PaymentMethod.dobInvalid")}}");
+			alert({{trans("Novalnet::PaymentMethod.dobInvalid")}});
 			$('#novalnet_form_btn').attr('disabled',false);
 			return false;
 		}
