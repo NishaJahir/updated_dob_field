@@ -135,28 +135,22 @@ let current_date = new Date();
 	$('#nn_invoice_form').on('submit', function() {
 	$('#novalnet_form_btn').attr('disabled',true);
         if ( $("#nn_invoice_year").val() == '' || $("#nn_invoice_date").val() == '' ) {
-	alert('Enter the date of birth');
+	alert("{{trans("Novalnet::PaymentMethod.dobEmpty")}}");
 	$('#novalnet_form_btn').attr('disabled',false);
 	return false;
 	}
         if($("#nn_invoice_month").val() == '0' ) {
-	alert('Select a month');
+	alert('{{trans("Novalnet::PaymentMethod.monthOption")}}');
 	$('#novalnet_form_btn').attr('disabled',false);
         return false;
 	}
 	
-        var birthday = $("#nn_invoice_year").val() + '-' + $("#nn_invoice_month").val() + '-' + $("#nn_invoice_date").val();
-	if (!Date.parse(birthday) ) {
-	alert("The date format is invalid");
-	$('#novalnet_form_btn').attr('disabled',false);
-	return false;
-	}
 	return isActualDate($("#nn_invoice_month").val(), $("#nn_invoice_date").val(), $("#nn_invoice_year").val());
 	});
 	function isActualDate (month, day, year) {
 		var tempDate = new Date(year, --month, day);
 		if( month !== tempDate.getMonth() || $("#nn_invoice_year").val().length < 4) {
-			alert("The date format is invalid");
+			alert("{{trans("Novalnet::PaymentMethod.dobInvalid")}}");
 			$('#novalnet_form_btn').attr('disabled',false);
 			return false;
 		}
