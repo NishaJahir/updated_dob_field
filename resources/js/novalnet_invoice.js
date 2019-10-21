@@ -140,7 +140,7 @@ let current_date = new Date();
 	return false;
 	}
         if($("#nn_invoice_month").val() == '0' ) {
-	alert($("#nn_dob_monthOption").val());
+	alert($("#nn_dob_month").val());
 	$('#novalnet_form_btn').attr('disabled',false);
         return false;
 	}
