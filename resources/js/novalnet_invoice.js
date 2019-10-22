@@ -10,8 +10,6 @@ $(document).ready( function() {
 		}
         	var day_val = $('#nn_invoice_date').val();
         	var len = day_val.length;  
-		 console.log(max_year);
-		 console.log(min_year);
         	if ((len == 1 && ((exp > -1 && day_val.charAt(0) > 3))) || (len == 1 && ((exp == 0 && day_val.charAt(0) == 0))) || (len == 1 && ((exp > 1 && day_val.charAt(0) == 3)))) {
         	return false;
         	}
