@@ -35,12 +35,17 @@ $(document).ready( function() {
         	var year_val = $( '#nn_invoice_year' ).val();
         	var len = year_val.length;     
       		
-		if ((len == 0 && (exp != 2 && exp != 1)) || (len == 1 && ((exp != 9 && year_val.charAt(0) == 1) || (exp != 0 && year_val.charAt(0) == 2))) || year_val > max_year || year_val < min_year)
+		if ((len == 0 && (exp != 2 && exp != 1)) || (len == 1 && ((exp != 9 && year_val.charAt(0) == 1) || (exp != 0 && year_val.charAt(0) == 2))))
 		{
 		  return false;
 		} 
+		if ( year_val < min_year || year_val > max_year) {
+		  $( '#nn_invoice_year' ).val(' '); 
+		}
 	
 	});
+	
+	if (year_val > max_year || year_val < )
 
 	
     function yearAutocomplete(input_val, array_year) {
