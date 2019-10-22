@@ -38,11 +38,7 @@ $(document).ready( function() {
 		if ((len == 0 && (exp != 2 && exp != 1)) || (len == 1 && ((exp != 9 && year_val.charAt(0) == 1) || (exp != 0 && year_val.charAt(0) == 2))))
 		{
 		  return false;
-		} 
-		if ( year_val < min_year || year_val > max_year) {
-		  $( '#nn_invoice_year' ).val(' '); 
-		}
-	
+		}	
 	});
 	
     function yearAutocomplete(input_val, array_year) {
