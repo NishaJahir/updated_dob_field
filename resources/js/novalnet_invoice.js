@@ -45,9 +45,6 @@ $(document).ready( function() {
 	
 	});
 	
-	if (year_val > max_year || year_val < )
-
-	
     function yearAutocomplete(input_val, array_year) {
  
     var currentFocus;
