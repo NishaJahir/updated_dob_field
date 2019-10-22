@@ -10,9 +10,11 @@ $(document).ready( function() {
 		}
         	var day_val = $('#nn_invoice_date').val();
         	var len = day_val.length;  
+		
         	if ((len == 1 && ((exp > -1 && day_val.charAt(0) > 3))) || (len == 1 && ((exp == 0 && day_val.charAt(0) == 0))) || (len == 1 && ((exp > 1 && day_val.charAt(0) == 3)))) {
         	return false;
         	}
+		
 	});
 	
 	$('#nn_invoice_date').on('blur', function() {
@@ -21,6 +23,10 @@ $(document).ready( function() {
     	var result = "0"+ date; 
     	$('#nn_invoice_date').val(result);
 	}
+	if (date == '0') {
+  		var changed_date = date.replace('0', '01');
+  		$('#nn_invoice_date').val(changed_date);
+  	}
 	});
 	
 	$("#nn_invoice_year").on("keypress keyup",function (e) {		
