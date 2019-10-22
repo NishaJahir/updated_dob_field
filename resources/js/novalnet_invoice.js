@@ -124,7 +124,7 @@ $(document).ready( function() {
 let current_date = new Date();
 	  current_date.getFullYear();
 	  var max_year = current_date.getFullYear() - 18;	
-	console.log
+	
 	  var min_year = current_date.getFullYear() - 90;
 	  
     var year_range = [];
