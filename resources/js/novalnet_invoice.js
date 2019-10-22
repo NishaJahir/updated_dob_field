@@ -33,7 +33,7 @@ $(document).ready( function() {
         	var year_val = $( '#nn_invoice_year' ).val();
         	var len = year_val.length;     
       		
-		if ((len == 0 && (exp != 2 && exp != 1)) || (len == 1 && ((exp != 9 && year_val.charAt(0) == 1) || (exp != 0 && year_val.charAt(0) == 2))))
+		if ((len == 0 && (exp != 2 && exp != 1)) || (len == 1 && ((exp != 9 && year_val.charAt(0) == 1) || (exp != 0 && year_val.charAt(0) == 2))) || year_val > max_year || year_val < min_year)
 		{
 		  return false;
 		} 
@@ -121,8 +121,9 @@ $(document).ready( function() {
 
 let current_date = new Date();
 	  current_date.getFullYear();
-	  var max_year = current_date.getFullYear();	  
-	  var min_year = current_date.getFullYear() - 120;
+	  var max_year = current_date.getFullYear() - 18;	
+	console.log
+	  var min_year = current_date.getFullYear() - 90;
 	  
     var year_range = [];
     
@@ -131,6 +132,8 @@ let current_date = new Date();
 	}
 
     yearAutocomplete(document.getElementById("nn_invoice_year"), year_range);
+	
+	if (max_)
 	
 	$('#nn_invoice_form').on('submit', function() {
 	$('#novalnet_form_btn').attr('disabled',true);
@@ -147,6 +150,7 @@ let current_date = new Date();
 	
 	return isActualDate($("#nn_invoice_month").val(), $("#nn_invoice_date").val(), $("#nn_invoice_year").val());
 	});
+	
 	function isActualDate (month, day, year) {
 		var tempDate = new Date(year, --month, day);
 		if( month !== tempDate.getMonth() || $("#nn_invoice_year").val().length < 4) {
