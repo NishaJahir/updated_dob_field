@@ -29,21 +29,42 @@ $(document).ready( function() {
   	}
 	});
 	
-	$("#nn_invoice_year").on("keypress keyup",function (e) {		
-		var exp = String.fromCharCode(e.which);
-		var reg = new RegExp(/[^0-9]/g);
-		if (exp.match(reg))
-		{
-		  e.preventDefault();
+	var min_year_flag = false;
+	var max_year_flag = false;
+	$("#nn_invoice_year").on("keyup",function (e) {	
+		var year_val = $(this).val();
+		var year_len = year_val.length;
+		if(year_len == 1 && year_val == 2) {
+			max_year_flag = true;
+			min_year_flag = false;
 		}
-        	var year_val = $( '#nn_invoice_year' ).val();
-        	var len = year_val.length;     
-      		
-		if ((len == 0 && (exp != 2 && exp != 1)) || (len == 1 && ((exp != 9 && year_val.charAt(0) == 1) || (exp != 0 && year_val.charAt(0) == 2))))
-		{
-		  return false;
-		}	
-	});
+		if(year_len == 1 && year_val == 1) {
+			min_year_flag = true;
+			max_year_flag = false;
+		}
+		});
+
+		$("#nn_invoice_year").on("keypress", function(e) {
+			var expval = String.fromCharCode(e.which);
+			var year_val = $(this).val();
+			var year_len = year_val.length;			
+			var pos_max_val = max_year.toString().charAt(year_len);	
+			var pos_min_val = min_year.toString().charAt(year_len);	
+
+			var reg = new RegExp(/[^0-9]/g);
+			if (expval.match(reg))
+			{
+			e.preventDefault();
+			}
+
+			if(max_year_flag == true && ((expval > pos_max_val) || (year_len == 3 && year_val+expval > max_year))) {
+				e.preventDefault();
+			} else if(min_year_flag == true && ((year_len == 3 && year_val+expval < min_year) || (year_len == 0 && expval > 2) || (expval != pos_min_val && expval < pos_min_val && year_len != 3 && year_len != 0))) {
+				e.preventDefault();
+			} else if(year_len == 0 && expval == 0) {
+				e.preventDefault();
+			}	
+		});
 	
     function yearAutocomplete(input_val, array_year) {
  
@@ -125,9 +146,9 @@ $(document).ready( function() {
 
 let current_date = new Date();
 	  current_date.getFullYear();
-	  var max_year = current_date.getFullYear() - 18;	
+	  var max_year = current_date.getFullYear() - 17;	
 	
-	  var min_year = current_date.getFullYear() - 90;
+	  var min_year = current_date.getFullYear() - 91;
 	  
     var year_range = [];
     
