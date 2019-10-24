@@ -31,8 +31,8 @@ $(document).ready( function() {
 	
 	var min_year_flag = false;
 	var max_year_flag = false;
-	$("#nn_invoice_year").on("keyup",function (e) {	
-		var year_val = $(this).val();
+	document.getElementById("nn_invoice_year").addEventListener("keyup", function(e) {	
+		var year_val = document.getElementById("nn_invoice_year").value;
 		var year_len = year_val.length;
 		if(year_len == 1 && year_val == 2) {
 			max_year_flag = true;
@@ -44,9 +44,9 @@ $(document).ready( function() {
 		}
 		});
 
-		$("#nn_invoice_year").on("keypress", function(e) {
+		document.getElementById("nn_invoice_year").addEventListener("keypress", function(e) {
 			var expval = String.fromCharCode(e.which);
-			var year_val = $(this).val();
+			var year_val = document.getElementById("nn_invoice_year").value;
 			var year_len = year_val.length;			
 			var pos_max_val = max_year.toString().charAt(year_len);	
 			var pos_min_val = min_year.toString().charAt(year_len);	
@@ -146,7 +146,7 @@ $(document).ready( function() {
 
 let current_date = new Date();
 	  current_date.getFullYear();
-	  var max_year = current_date.getFullYear() - 17;	
+	  var max_year = current_date.getFullYear() - 18;	
 	
 	  var min_year = current_date.getFullYear() - 91;
 	  
