@@ -61,7 +61,7 @@ $(document).ready( function() {
 				e.preventDefault();
 			} else if(min_year_flag == true && ((year_len == 3 && year_val+expval < min_year) || (year_len == 0 && expval > 2) || (expval != pos_min_val && expval < pos_min_val && year_len != 3 && year_len != 0))) {
 				e.preventDefault();
-			} else if(year_len == 0 && expval == 0) {
+			} else if((year_len == 0 && expval == 0) || expval > 2) {
 				e.preventDefault();
 			}	
 		});
